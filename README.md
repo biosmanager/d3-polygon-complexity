@@ -10,7 +10,31 @@ Calculate the compactness of a polygon. Value is `1` for a perfect circle.
 
 <a href="#polygonComplexity" name="polygonComplexity">#</a> d3.<b>polygonComplexity</b>(<i>polygon</i>) [<>](./src/complexity.js#L3 "Source Code")
 
-Calculates the complexity index of a polygon [1].
+Calculates the normalized difference between the area of the polygon and the area of its convex hull [1].
+
+<a href="#polygonHullDeviation" name="polygonHullDeviation">#</a> d3.<b>polygonHullDeviation</b>(<i>polygon</i>) [<>](./src/complexity.js#L9 "Source Code")
+
+Calculates local variability of the polygons boundary [1].
+
+<a href="#polygonVibrationAmplitude" name="polygonVibrationAmplitude">#</a> d3.<b>polygonVibrationAmplitude</b>(<i>polygon</i>) [<>](./src/complexity.js#L14 "Source Code")
+
+Calculates the normalized difference between the length of the polygon boundary and the length of the boundary of its convex hull [1].
+
+<a href="#polygonVibrationFrequency" name="polygonVibrationFrequency">#</a> d3.<b>polygonVibrationFrequency</b>(<i>polygon</i>) [<>](./src/complexity.js#L19 "Source Code")
+
+Calculates local variability of the polygons boundary [1].
+
+<a href="#polygonVertexCount" name="polygonVertexCount">#</a> d3.<b>polygonVertexCount</b>(<i>polygon</i>) [<>](./src/complexity.js#L24 "Source Code")
+
+Returns the number of vertices of the polygon. Assumes a closed polygon.
+
+<a href="#polygonNotchCount" name="polygonNotchCount">#</a> d3.<b>polygonNotchCount</b>(<i>polygon</i>) [<>](./src/complexity.js#L29 "Source Code")
+
+Calculates the number of notches in the polygon. A notch occurs at a vertex where the interior angle is larger than `180°` or `π`.
+
+<a href="#polygonWindingOrder" name="polygonWindingOrder">#</a> d3.<b>polygonWindingOrder</b>(<i>polygon</i>) [<>](./src/complexity.js#L59 "Source Code")
+
+Calculates the winding order of the polygon. Returns `-1` if counter-clockwise, `1` if clockwise.
 
 ## References
 
