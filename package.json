@@ -1,0 +1,48 @@
+{
+  "name": "d3-polygon-complexity",
+  "version": "0.0.1",
+  "description": "Various polygon complexity measures.",
+  "keywords": [
+    "d3",
+    "d3-module",
+    "polygon",
+    "complexity",
+    "measure",
+    "geometry",
+    "graphics"
+  ],
+  "homepage": "https://github.com/biosmanager/d3-polygon-complexity/",
+  "license": "BSD-3-Clause",
+  "author": {
+    "name": "biosmanager",
+    "url": "https://github.com/biosmanager"
+  },
+  "main": "dist/d3-polygon-complexity.js",
+  "unpkg": "dist/d3-polygon-complexity.min.js",
+  "jsdelivr": "dist/d3-polygon-complexity.min.js",
+  "module": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/biosmanager/d3-polygon-complexity.git"
+  },
+  "files": [
+    "dist/**/*.js",
+    "src/**/*.js"
+  ],
+  "scripts": {
+    "pretest": "rollup -c",
+    "test": "tape 'test/**/*-test.js' && eslint src test",
+    "prepublishOnly": "rm -rf dist && yarn test",
+    "postpublish": "git push && git push --tags && cd ../d3.github.com && git pull && cp ../${npm_package_name}/dist/${npm_package_name}.js ${npm_package_name}.v${npm_package_version%%.*}.js && cp ../${npm_package_name}/dist/${npm_package_name}.min.js ${npm_package_name}.v${npm_package_version%%.*}.min.js && git add ${npm_package_name}.v${npm_package_version%%.*}.js ${npm_package_name}.v${npm_package_version%%.*}.min.js && git commit -m \"${npm_package_name} ${npm_package_version}\" && git push && cd - && zip -j dist/${npm_package_name}.zip -- LICENSE README.md dist/${npm_package_name}.js dist/${npm_package_name}.min.js"
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "d3-polygon": "2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "6",
+    "rollup": "1",
+    "rollup-plugin-terser": "5",
+    "tape": "4"
+  }
+}
