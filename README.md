@@ -4,6 +4,8 @@ This modules provides a few polygon complexity measures.
 
 ## API Reference
 
+All polygons are expected as arrays that contain two-element vertex arrays where the first element is the x coordinate and the second is the y coordinate. The first and last vertex must be the same (closed polygon).
+
 <a href="#polygonCompactness" name="polygonCompactness">#</a> d3.<b>polygonCompactness</b>(<i>polygon</i>) [<>](./src/compactness.js#L3 "Source Code")
 
 Calculate the compactness of a polygon. Value is `1` for a perfect circle.
