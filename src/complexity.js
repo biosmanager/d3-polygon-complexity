@@ -3,17 +3,20 @@ import { polygonArea, polygonHull, polygonLength } from "d3-polygon";
 export default function(polygon) {
     var amp = vibrationAmplitude(polygon);
     var freq = vibrationFrequency(polygon);
-    return 0.8 * amp * freq * (0.2 * convexHullDeviation(polygon));
+    var deviation = convexHullDeviation(polygon);
+    return 0.8 * amp * freq * (0.2 * deviation);
 }
 
 export function convexHullDeviation(polygon) {
     var hullArea = Math.abs(polygonArea(polygonHull(polygon)));
-    return Math.abs(hullArea - polygonArea(polygon)) / hullArea;
+    var area = Math.abs(polygonArea(polygon));
+    return (hullArea - area) / hullArea;
 } 
 
 export function vibrationAmplitude(polygon) {
     var polygonBoundary = polygonLength(polygon);
-    return (polygonBoundary - polygonLength(polygonHull(polygon))) / polygonBoundary; 
+    var hullBoundary = polygonLength(polygonHull(polygon));
+    return (polygonBoundary - hullBoundary) / polygonBoundary; 
 }
 
 export function vibrationFrequency(polygon) {
@@ -25,11 +28,11 @@ export function vertexCount(polygon) {
     return polygon.length - 1;
 }
 
-// TODO: Different when CW and CCW
 export function notchCount(polygon) {
+    var isClockwise = windingOrder(polygon) == 1;
     var notchCount = 0;
     var triplet = [];
-    for (var i = 0; i < polygon.length + 1; i++) {
+    for (var i = 0; i < polygon.length + 2; i++) {
         var vertex = polygon[i % polygon.length];
         triplet.push(vertex);
         
@@ -41,9 +44,12 @@ export function notchCount(polygon) {
             var dy1 = triplet[1][1] - triplet[0][1];
             var dx2 = triplet[2][0] - triplet[1][0];
             var dy2 = triplet[2][1] - triplet[1][1];
-            var crossProduct = dx1 * dy2 - dy1 * dx2;
+            var perpDotProduct = dx1 * dy2 - dy1 * dx2;
 
-            if (crossProduct > 0) {
+            if (isClockwise && perpDotProduct > 0) {
+                notchCount++;
+            }
+            if (!isClockwise && perpDotProduct < 0) {
                 notchCount++;
             }
         }
