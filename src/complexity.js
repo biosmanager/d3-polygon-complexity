@@ -58,14 +58,9 @@ export function notchCount(polygon) {
     return notchCount;
 }
 
-// Determines winding order of polygon
-// Returns:
-// +1 if clockwise
-// -1 if counter-clockwise
 export function windingOrder(polygon) {
     // Method from https://stackoverflow.com/a/1165943 by Beta and Roberto Bonvallet.
     // CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)
-
     var sum = 0;
     for (var i = 0; i < polygon.length; i++) {
         var x2 = polygon[(i + 1) % polygon.length][0];
