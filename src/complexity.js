@@ -65,11 +65,6 @@ export function notchCount(polygon) {
 export function windingOrder(polygon) {
     // Method from https://stackoverflow.com/a/1165943 by Beta and Roberto Bonvallet.
     // CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)
-    // Sum((x[(i + 1) mod N]- x[i]) * (y[i] + y[(i + 1) mod N]) )  
-    // return Math.sign(polygon.reduce((acc, _, idx, src) => {
-    //     return acc + ((src[(idx + 1) % src.length][0] - src[idx][0]) * 
-    //                     (src[idx][1] + src[(idx + 1) % src.length][1]));
-    // }, 0));
 
     var sum = 0;
     for (var i = 0; i < polygon.length; i++) {
