@@ -1,6 +1,6 @@
 # d3-polygon-complexity
 
-This modules provides a few polygon complexity measures.
+This module provides a few polygon complexity measures.
 
 ## API Reference
 
