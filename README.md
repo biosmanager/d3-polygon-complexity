@@ -10,21 +10,22 @@ All polygons are expected as arrays that contain two-element vertex arrays where
 
 Calculate the compactness of a polygon. Value is `1` for a perfect circle.
 
-<a href="#polygonComplexity" name="polygonComplexity">#</a> d3.<b>polygonComplexity</b>(<i>polygon</i>) [<>](./src/complexity.js#L3 "Source Code")
+<a href="#polygonComplexity" name="polygonComplexity">#</a> d3.<b>polygonComplexity</b>(<i>polygon</i>[<i>, otherPolygon</i>]) [<>](./src/complexity.js#L3 "Source Code")
 
-Calculates the normalized difference between the area of the polygon and the area of its convex hull [1].
+Calculates the polygon complexity index defined in [[1]](#brinkhoff1995). The measure is based of `otherPolygon`. If `otherPolygon` is ommited, the convex hull of `polygon` is used as in the original definition by [[1]](#brinkhoff1995).
 
-<a href="#polygonHullDeviation" name="polygonHullDeviation">#</a> d3.<b>polygonHullDeviation</b>(<i>polygon</i>) [<>](./src/complexity.js#L9 "Source Code")
+<a href="#polygonAreaDeviation" name="polygonAreaDeviation">#</a> d3.<b>polygonAreaDeviation</b>(<i>polygon</i>[<i>, otherPolygon</i>]) [<>](./src/complexity.js#L9 "Source Code")
 
-Calculates local variability of the polygons boundary [1].
+Calculates the normalized difference between the area of the polygon and the area of another polygon.
+If `otherPolygon` is ommited, the convex hull of `polygon` is used as in the original definition by [[1]](#brinkhoff1995).
 
-<a href="#polygonVibrationAmplitude" name="polygonVibrationAmplitude">#</a> d3.<b>polygonVibrationAmplitude</b>(<i>polygon</i>) [<>](./src/complexity.js#L14 "Source Code")
+<a href="#polygonVibrationAmplitude" name="polygonVibrationAmplitude">#</a> d3.<b>polygonVibrationAmplitude</b>(<i>polygon</i>[<i>, otherPolygon</i>]) [<>](./src/complexity.js#L14 "Source Code")
 
-Calculates the normalized difference between the length of the polygon boundary and the length of the boundary of its convex hull [1].
+Calculates the normalized difference between the length of the polygon boundary and the length of the boundary of another polygon. If `otherPolygon` is ommited, the convex hull of `polygon` is used instead as in the original definition by [[1]](#brinkhoff1995).
 
 <a href="#polygonVibrationFrequency" name="polygonVibrationFrequency">#</a> d3.<b>polygonVibrationFrequency</b>(<i>polygon</i>) [<>](./src/complexity.js#L19 "Source Code")
 
-Calculates local variability of the polygons boundary [1].
+Calculates local variability of the polygons boundary [[1]](#brinkhoff1995).
 
 <a href="#polygonVertexCount" name="polygonVertexCount">#</a> d3.<b>polygonVertexCount</b>(<i>polygon</i>) [<>](./src/complexity.js#L24 "Source Code")
 
@@ -40,4 +41,4 @@ Calculates the winding order of the polygon. Returns `-1` if counter-clockwise, 
 
 ## References
 
-[1] Brinkhoff, T., Kriegel, H. P., Schneider, R., & Braun, A. (1995, December). Measuring the Complexity of Polygonal Objects. In ACM-GIS (p. 109). http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.73.1045&rep=rep1&type=pdf
+<a name="brinkhoff1995"></a>[1] Brinkhoff, T., Kriegel, H. P., Schneider, R., & Braun, A. (1995, December). Measuring the Complexity of Polygonal Objects. In ACM-GIS (p. 109). http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.73.1045&rep=rep1&type=pdf

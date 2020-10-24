@@ -1,7 +1,7 @@
 export { default as polygonCompactness } from "./compactness.js";
 export { 
     default as polygonComplexity, 
-    convexHullDeviation as polygonHullDeviation, 
+    areaDeviation as polygonAreaDeviation, 
     vibrationAmplitude as polygonVibrationAmplitude,
     vibrationFrequency as polygonVibrationFrequency,
     vertexCount as polygonVertexCount,

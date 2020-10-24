@@ -1,22 +1,28 @@
 import { polygonArea, polygonHull, polygonLength } from "d3-polygon";
 
-export default function(polygon) {
-    var amp = vibrationAmplitude(polygon);
+export default function(polygon, otherPolygon) {
+    var amp = vibrationAmplitude(polygon, otherPolygon);
     var freq = vibrationFrequency(polygon);
-    var deviation = convexHullDeviation(polygon);
+    var deviation = areaDeviation(polygon, otherPolygon);
     return 0.8 * amp * freq * (0.2 * deviation);
 }
 
-export function convexHullDeviation(polygon) {
-    var hullArea = Math.abs(polygonArea(polygonHull(polygon)));
+export function areaDeviation(polygon, otherPolygon) {
+    if (!otherPolygon) {
+        otherPolygon = polygonHull(polygon);
+    }
     var area = Math.abs(polygonArea(polygon));
-    return (hullArea - area) / hullArea;
+    var otherArea = Math.abs(polygonArea(otherPolygon));
+    return (otherArea - area) / otherArea;
 } 
 
-export function vibrationAmplitude(polygon) {
+export function vibrationAmplitude(polygon, otherPolygon) {
+    if (!otherPolygon) {
+        otherPolygon = polygonHull(polygon);
+    }
     var polygonBoundary = polygonLength(polygon);
-    var hullBoundary = polygonLength(polygonHull(polygon));
-    return (polygonBoundary - hullBoundary) / polygonBoundary; 
+    var otherBoundary = polygonLength(otherPolygon);
+    return (polygonBoundary - otherBoundary) / polygonBoundary; 
 }
 
 export function vibrationFrequency(polygon) {
