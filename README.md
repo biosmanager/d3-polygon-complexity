@@ -23,17 +23,17 @@ If `otherPolygon` is ommited, the convex hull of `polygon` is used as in the ori
 
 Calculates the normalized difference between the length of the polygon boundary and the length of the boundary of another polygon. If `otherPolygon` is ommited, the convex hull of `polygon` is used instead as in the original definition by [[1]](#brinkhoff1995).
 
-<a href="#polygonVibrationFrequency" name="polygonVibrationFrequency">#</a> d3.<b>polygonVibrationFrequency</b>(<i>polygon</i>) [<>](./src/complexity.js#L19 "Source Code")
+<a href="#polygonVibrationFrequency" name="polygonVibrationFrequency">#</a> d3.<b>polygonVibrationFrequency</b>(<i>polygon</i>[<i>, notchEpsilon</i>]) [<>](./src/complexity.js#L19 "Source Code")
 
-Calculates local variability of the polygons boundary [[1]](#brinkhoff1995).
+Calculates local variability of the polygons boundary [[1]](#brinkhoff1995). `notchEpsilon` defaults to `0` if omitted.
 
 <a href="#polygonVertexCount" name="polygonVertexCount">#</a> d3.<b>polygonVertexCount</b>(<i>polygon</i>) [<>](./src/complexity.js#L24 "Source Code")
 
 Returns the number of vertices of the polygon. Assumes a closed polygon.
 
-<a href="#polygonNotchCount" name="polygonNotchCount">#</a> d3.<b>polygonNotchCount</b>(<i>polygon</i>) [<>](./src/complexity.js#L29 "Source Code")
+<a href="#polygonNotchCount" name="polygonNotchCount">#</a> d3.<b>polygonNotchCount</b>(<i>polygon</i>[<i>, notchEpsilon</i>]) [<>](./src/complexity.js#L29 "Source Code")
 
-Calculates the number of notches in the polygon. A notch occurs at a vertex where the interior angle is larger than `180°` or `π`.
+Calculates the number of notches in the polygon. A notch occurs at a vertex where the interior angle is larger than `180°` or `π`. In some cases, it is useful to allow a small `notchEpsilon` to only count larger notches. If omitted, `notchEpsilon` defaults to `0`.
 
 <a href="#polygonWindingOrder" name="polygonWindingOrder">#</a> d3.<b>polygonWindingOrder</b>(<i>polygon</i>) [<>](./src/complexity.js#L59 "Source Code")
 

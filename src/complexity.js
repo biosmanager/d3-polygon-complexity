@@ -1,14 +1,20 @@
 import { polygonArea, polygonHull, polygonLength } from "d3-polygon";
 
-export default function(polygon, otherPolygon) {
-    var amp = vibrationAmplitude(polygon, otherPolygon);
-    var freq = vibrationFrequency(polygon);
-    var deviation = areaDeviation(polygon, otherPolygon);
+export default function(polygon, options) {
+    if (typeof options === "undefined") {
+        options = {
+            otherPolygon: undefined,
+            notchEpsilon: undefined
+        }
+    }
+    var amp = vibrationAmplitude(polygon, options.otherPolygon);
+    var freq = vibrationFrequency(polygon, options.notchEpsilon);
+    var deviation = areaDeviation(polygon, options.otherPolygon);
     return 0.8 * amp * freq * (0.2 * deviation);
 }
 
 export function areaDeviation(polygon, otherPolygon) {
-    if (!otherPolygon) {
+    if (typeof otherPolygon == "undefined") {
         otherPolygon = polygonHull(polygon);
     }
     var area = Math.abs(polygonArea(polygon));
@@ -17,7 +23,7 @@ export function areaDeviation(polygon, otherPolygon) {
 } 
 
 export function vibrationAmplitude(polygon, otherPolygon) {
-    if (!otherPolygon) {
+    if (typeof otherPolygon === "undefined") {
         otherPolygon = polygonHull(polygon);
     }
     var polygonBoundary = polygonLength(polygon);
@@ -25,8 +31,11 @@ export function vibrationAmplitude(polygon, otherPolygon) {
     return (polygonBoundary - otherBoundary) / polygonBoundary; 
 }
 
-export function vibrationFrequency(polygon) {
-    var notchesNorm = notchCount(polygon) / (vertexCount(polygon) - 3);
+export function vibrationFrequency(polygon, notchEpsilon) {
+    if (typeof notchEpsilon === "undefined") {
+        notchEpsilon = 0;
+    }
+    var notchesNorm = notchCount(polygon, notchEpsilon) / (vertexCount(polygon) - 3);
     return 16 * Math.pow(notchesNorm - 0.5, 4) - 8 * Math.pow(notchesNorm - 0.5, 2) + 1;
 }
 
@@ -34,7 +43,10 @@ export function vertexCount(polygon) {
     return polygon.length - 1;
 }
 
-export function notchCount(polygon) {
+export function notchCount(polygon, notchEpsilon) {
+    if (typeof notchEpsilon === "undefined") {
+        notchEpsilon = 0;
+    }
     var isClockwise = windingOrder(polygon) == 1;
     var notchCount = 0;
     var triplet = [];
@@ -52,10 +64,10 @@ export function notchCount(polygon) {
             var dy2 = triplet[2][1] - triplet[1][1];
             var perpDotProduct = dx1 * dy2 - dy1 * dx2;
 
-            if (isClockwise && perpDotProduct > 0) {
+            if (isClockwise && perpDotProduct > notchEpsilon) {
                 notchCount++;
             }
-            if (!isClockwise && perpDotProduct < 0) {
+            if (!isClockwise && perpDotProduct < notchEpsilon) {
                 notchCount++;
             }
         }
