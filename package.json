@@ -1,6 +1,6 @@
 {
   "name": "d3-polygon-complexity",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Various polygon complexity measures.",
   "keywords": [
     "d3",

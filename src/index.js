@@ -6,5 +6,6 @@ export {
     vibrationFrequency as polygonVibrationFrequency,
     vertexCount as polygonVertexCount,
     notchCount as polygonNotchCount,
+    normalizedNotchCount as polygonNormalizedNotchCount,
     windingOrder as polygonWindingOrder      
 } from "./complexity.js";

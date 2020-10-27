@@ -14,28 +14,32 @@ Calculate the compactness of a polygon. Value is `1` for a perfect circle.
 
 Calculates the polygon complexity index defined in [[1]](#brinkhoff1995). The measure is based of `otherPolygon`. If `otherPolygon` is ommited, the convex hull of `polygon` is used as in the original definition by [[1]](#brinkhoff1995).
 
-<a href="#polygonAreaDeviation" name="polygonAreaDeviation">#</a> d3.<b>polygonAreaDeviation</b>(<i>polygon</i>[<i>, otherPolygon</i>]) [<>](./src/complexity.js#L9 "Source Code")
+<a href="#polygonAreaDeviation" name="polygonAreaDeviation">#</a> d3.<b>polygonAreaDeviation</b>(<i>polygon</i>[<i>, otherPolygon</i>]) [<>](./src/complexity.js#L16 "Source Code")
 
 Calculates the normalized difference between the area of the polygon and the area of another polygon.
 If `otherPolygon` is ommited, the convex hull of `polygon` is used as in the original definition by [[1]](#brinkhoff1995).
 
-<a href="#polygonVibrationAmplitude" name="polygonVibrationAmplitude">#</a> d3.<b>polygonVibrationAmplitude</b>(<i>polygon</i>[<i>, otherPolygon</i>]) [<>](./src/complexity.js#L14 "Source Code")
+<a href="#polygonVibrationAmplitude" name="polygonVibrationAmplitude">#</a> d3.<b>polygonVibrationAmplitude</b>(<i>polygon</i>[<i>, otherPolygon</i>]) [<>](./src/complexity.js#L25 "Source Code")
 
 Calculates the normalized difference between the length of the polygon boundary and the length of the boundary of another polygon. If `otherPolygon` is ommited, the convex hull of `polygon` is used instead as in the original definition by [[1]](#brinkhoff1995).
 
-<a href="#polygonVibrationFrequency" name="polygonVibrationFrequency">#</a> d3.<b>polygonVibrationFrequency</b>(<i>polygon</i>[<i>, notchEpsilon</i>]) [<>](./src/complexity.js#L19 "Source Code")
+<a href="#polygonVibrationFrequency" name="polygonVibrationFrequency">#</a> d3.<b>polygonVibrationFrequency</b>(<i>polygon</i>[<i>, notchEpsilon</i>]) [<>](./src/complexity.js#L34 "Source Code")
 
 Calculates local variability of the polygons boundary [[1]](#brinkhoff1995). `notchEpsilon` defaults to `0` if omitted.
 
-<a href="#polygonVertexCount" name="polygonVertexCount">#</a> d3.<b>polygonVertexCount</b>(<i>polygon</i>) [<>](./src/complexity.js#L24 "Source Code")
+<a href="#polygonVertexCount" name="polygonVertexCount">#</a> d3.<b>polygonVertexCount</b>(<i>polygon</i>) [<>](./src/complexity.js#L42 "Source Code")
 
 Returns the number of vertices of the polygon. Assumes a closed polygon.
 
-<a href="#polygonNotchCount" name="polygonNotchCount">#</a> d3.<b>polygonNotchCount</b>(<i>polygon</i>[<i>, notchEpsilon</i>]) [<>](./src/complexity.js#L29 "Source Code")
+<a href="#polygonNotchCount" name="polygonNotchCount">#</a> d3.<b>polygonNotchCount</b>(<i>polygon</i>[<i>, notchEpsilon</i>]) [<>](./src/complexity.js#L46 "Source Code")
 
 Calculates the number of notches in the polygon. A notch occurs at a vertex where the interior angle is larger than `180°` or `π`. In some cases, it is useful to allow a small `notchEpsilon` to only count larger notches. If omitted, `notchEpsilon` defaults to `0`.
 
-<a href="#polygonWindingOrder" name="polygonWindingOrder">#</a> d3.<b>polygonWindingOrder</b>(<i>polygon</i>) [<>](./src/complexity.js#L59 "Source Code")
+<a href="#polygonNormalizedNotchCount" name="polygonNormalizedNotchCount">#</a> d3.<b>polygonNormalizedNotchCount</b>(<i>polygon</i>[<i>, notchEpsilon</i>]) [<>](./src/complexity.js#L79 "Source Code")
+
+Calculates notch count normalized by polygon vertex count [[1]](#brinkhoff1995).
+
+<a href="#polygonWindingOrder" name="polygonWindingOrder">#</a> d3.<b>polygonWindingOrder</b>(<i>polygon</i>) [<>](./src/complexity.js#L83 "Source Code")
 
 Calculates the winding order of the polygon. Returns `-1` if counter-clockwise, `1` if clockwise.
 

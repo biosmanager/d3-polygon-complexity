@@ -35,7 +35,7 @@ export function vibrationFrequency(polygon, notchEpsilon) {
     if (typeof notchEpsilon === "undefined") {
         notchEpsilon = 0;
     }
-    var notchesNorm = notchCount(polygon, notchEpsilon) / (vertexCount(polygon) - 3);
+    var notchesNorm = normalizedNotchCount(polygon, notchEpsilon);
     return 16 * Math.pow(notchesNorm - 0.5, 4) - 8 * Math.pow(notchesNorm - 0.5, 2) + 1;
 }
 
@@ -74,6 +74,10 @@ export function notchCount(polygon, notchEpsilon) {
     }
     
     return notchCount;
+}
+
+export function normalizedNotchCount(polygon, notchEpsilon) {
+    return notchCount(polygon, notchEpsilon) / (vertexCount(polygon) - 3);   
 }
 
 export function windingOrder(polygon) {
