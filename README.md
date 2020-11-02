@@ -10,9 +10,9 @@ All polygons are expected as arrays that contain two-element vertex arrays where
 
 Calculate the compactness of a polygon. Value is `1` for a perfect circle.
 
-<a href="#polygonComplexity" name="polygonComplexity">#</a> d3.<b>polygonComplexity</b>(<i>polygon</i>[<i>, otherPolygon</i>]) [<>](./src/complexity.js#L3 "Source Code")
+<a href="#polygonComplexity" name="polygonComplexity">#</a> d3.<b>polygonComplexity</b>(<i>polygon</i>[<i>, options</i>]) [<>](./src/complexity.js#L3 "Source Code")
 
-Calculates the polygon complexity index defined in [[1]](#brinkhoff1995). The measure is based of `otherPolygon`. If `otherPolygon` is ommited, the convex hull of `polygon` is used as in the original definition by [[1]](#brinkhoff1995).
+Calculates the polygon complexity index defined in [[1]](#brinkhoff1995). The comparison polygon and notch epsilon (see below) can be supplied via `options` as an object containing `otherPolygon` and `notchEpsilon`.
 
 <a href="#polygonAreaDeviation" name="polygonAreaDeviation">#</a> d3.<b>polygonAreaDeviation</b>(<i>polygon</i>[<i>, otherPolygon</i>]) [<>](./src/complexity.js#L16 "Source Code")
 
