@@ -67,7 +67,7 @@ export function notchCount(polygon, notchEpsilon) {
             if (isClockwise && perpDotProduct > notchEpsilon) {
                 notchCount++;
             }
-            if (!isClockwise && perpDotProduct < notchEpsilon) {
+            if (!isClockwise && perpDotProduct < -notchEpsilon) {
                 notchCount++;
             }
         }
